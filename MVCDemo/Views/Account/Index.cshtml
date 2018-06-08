@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<MVCDemo.Models.SysUser>
+
+@{
     Layout = null;
 }
 
@@ -11,7 +13,20 @@
 </head>
 <body>
     <div>
-    
+        <table>
+            <tr>
+                <th>@Html.DisplayNameFor(model=>model.UserName)</th>
+                <th>@Html.DisplayNameFor(model=>model.Email)</th>
+            </tr>
+            @foreach(var item in Model)
+            {
+            <tr>
+                <td>@Html.DisplayFor(modelItem=>item.UserName)</td>
+                <td>@Html.DisplayFor(modelItem=>item.Email)</td>
+                <td>@Html.ActionLink("Details","Details",new{id=item.ID})</td>
+            </tr>
+            }
+        </table>
     </div>
 </body>
 </html>

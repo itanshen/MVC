@@ -14,7 +14,13 @@ namespace MVCDemo.Controllers
         // GET: /Account/
         public ActionResult Index()
         {
-            return View();
+            return View(db.SysUsers);
+        }
+
+        public ActionResult Details(int ID)
+        {
+            SysUser sysUser = db.SysUsers.Find(ID);
+            return View(sysUser);
         }
 
         public ActionResult Login()
@@ -38,9 +44,9 @@ namespace MVCDemo.Controllers
             }
             else
             {
-                var user = db.SysUsers.Where(o => o.Email == email && o.Password == password);
+                var user = db.SysUsers.Where(o => o.Email == email && o.Password == password).FirstOrDefault();
 
-                ViewBag.LoginState = email + " 登录后。。。";
+                ViewBag.LoginState = user.UserName + " 登录后。。。";
             }
 
             return View();
