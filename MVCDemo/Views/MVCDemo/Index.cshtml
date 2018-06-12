@@ -1,0 +1,15 @@
+﻿<h1>通过@@Html.Partial来使用</h1>
+@Html.Partial("~/Views/Shared/_PartialPageWidget.cshtml")
+
+<h1>通过@@Html.RenderPartial来使用</h1>
+@{
+    Html.RenderPartial("~/Views/Shared/_PartialPageWidget.cshtml");
+}
+
+<h1>通过@@Html.Action</h1>
+@Html.Action("ShowWidget")
+
+<h1>通过@@Html.RenderAction</h1>
+@{
+    Html.RenderAction("ShowWidget");
+}

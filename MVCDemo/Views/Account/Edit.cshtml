@@ -1,0 +1,24 @@
+﻿@model MVCDemo.Models.SysUser
+<h2>Edit</h2>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.ID)
+    <div>
+        @Html.LabelFor(model => model.UserName)
+        @Html.EditorFor(model => model.UserName)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Email)
+        @Html.EditorFor(model => model.Email)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Password)
+        @Html.PasswordFor(model => model.Password)
+    </div>
+    <div>
+        <input type="submit" value="Save" />
+    </div>
+}
+<div>
+    @Html.ActionLink("Back To List", "Index")
+</div>

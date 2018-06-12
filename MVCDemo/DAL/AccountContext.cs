@@ -13,6 +13,7 @@ namespace MVCDemo.DAL
         public AccountContext()
             : base("AccountContext")
         { }
+        public DbSet<Test> Tests { get; set; }
         public DbSet<SysUser> SysUsers { get; set; }
         public DbSet<SysRole> SysRoles { get; set; }
         public DbSet<SysUserRole> SysUserRoles { get; set; }
@@ -20,10 +21,10 @@ namespace MVCDemo.DAL
         {
             // 禁用默认表名复数形式
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-            // 禁用一对多级联删除
-            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-            // 禁用多对多级联删除
-            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+            //// 禁用一对多级联删除
+            //modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+            //// 禁用多对多级联删除
+            //modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
         }
     }
 }
