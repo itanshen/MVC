@@ -99,8 +99,7 @@ namespace MVCDemo.Controllers
                 .Include(u => u.SysUserRoles)
                 .Where(u => u.ID == ID)
                 .Single();
-            if (TryUpdateModel(userToUpdate, ""
-                , new string[] { "LoginName", "Email", "Password", "CreateDate", "SysDepartmentID" }))
+            if (TryUpdateModel(userToUpdate, "", new string[] { "LoginName", "Email", "Password", "CreateDate", "SysDepartmentID" }))
             {
                 try
                 {
