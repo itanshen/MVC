@@ -63,7 +63,7 @@ namespace MVCDemo.Controllers
         {
             var allDepartments = db.SysDepartments.ToList();
             List<SelectListItem> departmentList = new List<SelectListItem>();
-            departmentList.Add(new SelectListItem { Text = "请选择", Value = "", Selected = (SysDepartmentID == null ? true : false) });
+            departmentList.Add(new SelectListItem { Text = "请选择", Value = "" });
             foreach (var item in allDepartments)
             {
                 departmentList.Add(new SelectListItem { Text = item.DepartmentName.ToString(), Value = item.ID.ToString(), Selected = (item.ID == SysDepartmentID ? true : false) });
