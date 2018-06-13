@@ -1,0 +1,73 @@
+﻿@model MVCDemo.Models.SysUser
+
+<h2>Edit</h2>
+<h3>SysUser</h3>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.ID)
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserName)
+        @Html.EditorFor(model => model.UserName)
+        @Html.ValidationMessageFor(model => model.UserName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email)
+        @Html.EditorFor(model => model.Email)
+        @Html.ValidationMessageFor(model => model.Email)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Password)
+        @Html.PasswordFor(model => model.Password)
+        @Html.ValidationMessageFor(model => model.Password)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.CreateDate)
+        @Html.EditorFor(model => model.CreateDate)
+    </div>
+    @*<div>
+            @Html.LabelFor(model => model.SysDepartmentID)
+            @Html.DropDownListFor(model => model.SysDepartmentID, ViewData["departmentList"] as IEnumerable<SelectListItem>)
+        </div>*@
+    <div class="form-group">
+        @Html.LabelFor(model => model.SysDepartmentID, "SysDepartmentID", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("SysDepartmentID")
+            @Html.ValidationMessageFor(model => model.SysDepartmentID)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="ol-md-10">
+            <table>
+                <tr>
+                    @{
+                        int trBreak = 0;
+                        List<MVCDemo.ViewModels.AssignedRoleData> roles = ViewBag.Roles;
+                        foreach (var role in roles)
+                        {
+                            if (trBreak++ % 3 == 0)
+                            {
+                                @:</tr><tr>
+                            }
+                            @:<td>
+                                <input type="checkbox" 
+                                        name="selectedRoles" 
+                                        value="@role.RoleID" 
+                                        @(Html.Raw(role.Assigned ? " checked=\"checked\" " : "")) />
+                                @: @role.RoleName
+                            @:</td>
+                        }
+                        @:</tr>
+                    }
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Save" />
+    </div>
+}
+<div>
+    @Html.ActionLink("Back To List", "Index")
+</div>
